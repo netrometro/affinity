@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card shadow p-3 mb-5 bg-write rounded">
+    <div class="card-title">
+      <h1 class="display-1 text-center">affinity</h1>
+    </div>
+    <div class="card-body">
+      <form>
+          <div class="form-group">
+            <label for="matricula">Por favor, digite sua matricula.</label>
+            <input type="text" id="matricula" class="form-control" placeholder="Sua matricula" />
+          </div>
+          <div class="form-group">
+            <label for="experiencia" >Você já programou alguma vez?</label>
+            <small class="form-text text-muted">Mesmo que seja só um pouquinho.</small>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="xp" id="sim" value="sim" />
+              <label class="form-check-label" for="simm">
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="xp" id="nao" value="não">
+              <label class="form-check-label" for="nao">
+                Não
+              </label>
+            </div>
+            <hr />
+            <button routerLink="tutorial" type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+      </form>
+    </div>
+</div>
+</div>
