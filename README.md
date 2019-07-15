@@ -1,3 +1,3 @@
-# angular-wdykav
+# affinity (old angular-wdykav)
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-wdykav)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/affinity)

@@ -1,1 +1,9 @@
 /* Add application styles & imports to this file! */
+
+body {
+  padding-top: 30px;
+}
+
+.autorizacao {
+  height: 200px;
+}
