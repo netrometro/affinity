@@ -10,10 +10,11 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { QuestionaryComponent } from './questionary/questionary.component';
 
 import { routing } from './app.routing';
+import { EndingComponent } from './ending/ending.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, routing ],
-  declarations: [ AppComponent, HelloComponent, HomeComponent, IdentifyComponent, TutorialComponent, QuestionaryComponent ],
+  declarations: [ AppComponent, HelloComponent, HomeComponent, IdentifyComponent, TutorialComponent, QuestionaryComponent, EndingComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
