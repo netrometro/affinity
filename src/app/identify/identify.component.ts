@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-identify',
@@ -11,7 +12,11 @@ export class IdentifyComponent implements OnInit {
   matricula: number;
   experiencia: string;
 
-  constructor() { }
+  router: Router;
+
+  constructor(router: Router){ 
+    this.router = router; 
+  } 
 
   ngOnInit() { }
 
@@ -19,11 +24,13 @@ export class IdentifyComponent implements OnInit {
     if( form.invalid ){
       return;	
     }
-    
+
     this.matricula = form.controls['mat'].value;
     this.experiencia = form.controls['xp'].value;
 
     console.log("Matricula: " + this.matricula);
     console.log("Experiência: " + this.experiencia);
+
+    this.router.navigate(['/tutorial', '']);
   }
 }
