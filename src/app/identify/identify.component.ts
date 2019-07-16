@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-identify',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdentifyComponent implements OnInit {
 
+  matricula: number;
+  experiencia: string;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  onFormSubmit(form: NgForm) {
+    if( form.invalid ){
+      return;	
+    }
+    
+    this.matricula = form.controls['mat'].value;
+    this.experiencia = form.controls['xp'].value;
+
+    console.log("Matricula: " + this.matricula);
+    console.log("Experiência: " + this.experiencia);
+  }
 }
