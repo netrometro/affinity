@@ -3,39 +3,30 @@
     <h1 class="display-1 text-center">affinity</h1>
   </div>
   <div class="card-body">
-      <ul class="nav nav-tabs">
-      <li class="nav-item"><a class="nav-link" href="#">1</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">2</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">3</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">4</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">5</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">6</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">7</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">8</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">9</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">10</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">11</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">12</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">13</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">14</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">15</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">16</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">17</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">18</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">19</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">20</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">21</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">22</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">23</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">24</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">25</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">26</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">27</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">28</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">29</a></li>
-      <li class="nav-item"><a class="nav-link" >30</a></li>
-    </ul> 
-    
+
+    <ul class="nav nav-tabs">
+      <li *ngFor="let wallet of coinwallet" role="presentation" class="nav-item">
+        <a class="nav-link" (click)="selectedwallet = wallet" [class.active]="selectedwallet === wallet">{{ wallet }}</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="home" class="tab-pane active" *ngIf="selectedwallet === coinwallet[0]" role="tabpanel">
+        <h3>HOME</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div id="menu1" class="tab-pane active" *ngIf="selectedwallet === coinwallet[1]" role="tabpanel">
+        <h3>Menu 1</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div id="menu2" class="tab-pane active" *ngIf="selectedwallet === coinwallet[2]" role="tabpanel">
+        <h3>Menu 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+      <div id="menu3" class="tab-pane active" *ngIf="selectedwallet === coinwallet[3]" role="tabpanel">
+        <h3>Menu 3</h3>
+        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      </div>
+    </div>
     <hr />
     <p class="text-right"><a routerLink="/ending" class="btn btn-primary">Próximo</a></p>
 </div>

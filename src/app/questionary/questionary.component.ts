@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionaryComponent implements OnInit {
 
-  constructor() { }
+  coinwallet: string[] = [];
+  selectedwallet = this.coinwallet[0];
+
+  constructor() {
+    var points = new Array(100);
+    for (var i = 0; i < 30; i++) {
+      this.coinwallet[i] = i + 1;
+    }
+  }
 
   ngOnInit() {
   }

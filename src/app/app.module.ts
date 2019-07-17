@@ -8,6 +8,7 @@ import { IdentifyComponent } from './identify/identify.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { QuestionaryComponent } from './questionary/questionary.component';
 import { EndingComponent } from './ending/ending.component';
+import { QuestionaryDetailComponent } from './questionary-detail/questionary-detail.component';
 
 import { routing } from './app.routing';
 
@@ -23,7 +24,8 @@ import { routing } from './app.routing';
     IdentifyComponent, 
     TutorialComponent, 
     QuestionaryComponent, 
-    EndingComponent 
+    EndingComponent, 
+    QuestionaryDetailComponent 
   ],
   bootstrap:    [ 
     AppComponent 
