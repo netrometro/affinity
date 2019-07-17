@@ -9,10 +9,41 @@ body {
 }
 
 .questao {
-  padding: 200px, 0px;
+  padding: 20px 0px;
 }
 
 .domino {
+  background-image: url("https://i.ibb.co/nbqYMY3/dice-texture.png");
+  background-size: 150px 150px;
+  width: 50px;
+  height: 50px;
+}
+
+.um {
+  background-position: center center;
+}
+
+.dois {
+  background-position: left center;
+}
+
+.tres {
+  background-position: center bottom;
+}
+
+.quatro {
+  background-position: center top;
+}
+
+.cinco {
+  background-position: right center;
+}
+
+.seis {
+  background-position: right bottom;
+}
+
+.resposta {
   width: 50px;
   height: 50px;
 }

@@ -8,16 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionaryComponent implements OnInit {
 
   coinwallet: string[] = [];
-  selectedwallet = this.coinwallet[0];
+  selectedwallet: string = this.coinwallet[0];
+
+  respostas: number[][] = [];
+
+  myModel: any;
 
   constructor() {
     var points = new Array(100);
     for (var i = 0; i < 44; i++) {
       this.coinwallet[i] = i + 1;
     }
+    this.selectedwallet = 1;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  onBlurMethod() {
+    console.log(this.myModel);
+  }
 }
