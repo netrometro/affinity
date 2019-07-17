@@ -6,9 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdentifyComponent } from './identify/identify.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { QuestionaryComponent } from './questionary/questionary.component';
+//import { QuestionaryComponent } from './questionary/questionary.component';
 import { EndingComponent } from './ending/ending.component';
-import { QuestionaryDetailComponent } from './questionary-detail/questionary-detail.component';
 
 import { routing } from './app.routing';
 
@@ -23,9 +22,8 @@ import { routing } from './app.routing';
     HomeComponent, 
     IdentifyComponent, 
     TutorialComponent, 
-    QuestionaryComponent, 
-    EndingComponent, 
-    QuestionaryDetailComponent 
+    //QuestionaryComponent, 
+    EndingComponent
   ],
   bootstrap:    [ 
     AppComponent 
