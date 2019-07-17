@@ -31,6 +31,6 @@ export class IdentifyComponent implements OnInit {
     console.log("Matricula: " + this.matricula);
     console.log("Experiência: " + this.experiencia);
 
-    this.router.navigate(['/tutorial', '']);
+    this.router.navigate(['tutorial', '']);
   }
 }
