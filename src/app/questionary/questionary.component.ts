@@ -30,7 +30,7 @@ export class QuestionaryComponent implements OnInit {
       this.progresso = this.time / 60 * 4;
     }, 1000);
     
-    var t = window.setTimeout(() => {
+    var tt = window.setTimeout(() => {
       //redireciona.
     }, 1500000);
   }
