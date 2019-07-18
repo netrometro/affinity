@@ -3,11 +3,18 @@
     <h1 class="display-1 text-center">affinity</h1>
   </div>
   <div class="card-body">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width.%]="progresso" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">{{ restante }} minutos restantes.</div>
+    </div>
 
-    <ul class="nav nav-tabs">
-      <li *ngFor="let wallet of coinwallet" role="presentation" class="nav-item">
-        <a class="nav-link" (click)="selectedwallet = wallet" [class.active]="selectedwallet === wallet">{{ wallet }}</a></li>
-    </ul>
+    <br />
+    <nav aria-label="Navegação de página exemplo">
+      <ul class="pagination">
+        <li *ngFor="let wallet of coinwallet" class="page-item" [class.active]="selectedwallet === wallet">
+          <a class="page-link" (click)="selectedwallet = wallet" ><small>{{ wallet }}</small></a>
+        </li>
+      </ul>
+    </nav>
 
     <div class="tab-content">
       <div class="tab-pane active questao" *ngIf="selectedwallet === coinwallet[0]" role="tabpanel">

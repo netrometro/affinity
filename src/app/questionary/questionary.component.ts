@@ -9,6 +9,9 @@ export class QuestionaryComponent implements OnInit {
 
   coinwallet: string[] = [];
   selectedwallet: string = this.coinwallet[0];
+  time: number = 0;
+  restante: number = 25;
+  progresso: number = 0;
 
   respostas: number[][] = [];
 
@@ -20,6 +23,16 @@ export class QuestionaryComponent implements OnInit {
       this.coinwallet[i] = i + 1;
     }
     this.selectedwallet = 1;
+
+    var t = window.setInterval(() => {
+      this.time += 1;
+      this.restante = 25 - Math.floor(this.time / 60);
+      this.progresso = this.time / 60 * 4;
+    }, 1000);
+    
+    var t = window.setTimeout(() => {
+      //redireciona.
+    }, 1500000);
   }
 
   ngOnInit() { }

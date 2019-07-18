@@ -8,6 +8,10 @@ table {
   margin: auto;
 }
 
+.page-link {
+  padding: .5rem .48rem !important;
+}
+
 .autorizacao {
   height: 250px;
 }
