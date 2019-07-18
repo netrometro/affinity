@@ -24,10 +24,15 @@
               <label class="form-check-label" for="sim">Não</label>
             </div>
             <div *ngIf="xp.invalid && userForm.submitted" [ngClass] = "'alert alert-danger'"><small>Precisamos que preencha tudo.</small></div>
-            <hr />
-            <button class="btn btn-primary">Enviar</button>
-            <!--a routerLink="/tutorial" class="btn btn-primary">Enviar</a-->
           </div>
+          <hr />
+          <button class="btn btn-primary">Enviar</button>
+          <!--a routerLink="/tutorial" class="btn btn-primary">Enviar</a-->
+          <p>Qual a sua idade?</p>
+          <input name="idade" type="number" />
+          <p>Qual o seu gênero?</p>
+          
+          <p>Qual é o grau mais alto de educação que você completou</p>
       </form>
     </div>
 </div>
