@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionary',
@@ -17,7 +18,7 @@ export class QuestionaryComponent implements OnInit {
 
   myModel: any;
 
-  constructor() {
+  constructor(private router: Router) {
     var points = new Array(100);
     for (var i = 0; i < 44; i++) {
       this.coinwallet[i] = i + 1;
@@ -31,7 +32,7 @@ export class QuestionaryComponent implements OnInit {
     }, 1000);
     
     var tt = window.setTimeout(() => {
-      //redireciona.
+      this.router.navigate(['ending']);
     }, 1500000);
   }
 
