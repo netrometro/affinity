@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdentifyComponent } from './identify/identify.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { QuestionaryComponent } from './questionary/questionary.component';
 import { EndingComponent } from './ending/ending.component';
+
+import { QuestionaryModule } from './questionary/questionary.module';
 
 import { routing } from './app.routing';
 
@@ -15,6 +16,7 @@ import { routing } from './app.routing';
   imports:      [ 
     BrowserModule, 
     FormsModule, 
+    QuestionaryModule,
     routing
   ],
   declarations: [ 
@@ -22,7 +24,6 @@ import { routing } from './app.routing';
     HomeComponent, 
     IdentifyComponent, 
     TutorialComponent, 
-    QuestionaryComponent, 
     EndingComponent
   ],
   bootstrap:    [ 
