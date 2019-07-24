@@ -7,11 +7,13 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { QuestionaryComponent } from './questionary/questionary.component';
 import { EndingComponent } from './ending/ending.component';
 
+import { AuthGuard } from './guards/auth.guard';
+
 const APP_ROUTES: Routes = [
    { path: '', component: HomeComponent },
    { path: 'identify', component: IdentifyComponent },
-   { path: 'tutorial', component: TutorialComponent },
-   { path: 'questionary', component: QuestionaryComponent },
+   { path: 'tutorial', component: TutorialComponent, canActivate: AuthGuard },
+   { path: 'questionary', component: QuestionaryComponent, canActivate: AuthGuard },
    //{ path: 'questionary/:id', component: QuestionaryDetailComponent },
    { path: 'ending', component: EndingComponent }
 ];

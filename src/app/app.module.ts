@@ -11,6 +11,8 @@ import { EndingComponent } from './ending/ending.component';
 import { QuestionaryModule } from './questionary/questionary.module';
 
 import { routing } from './app.routing';
+import { AuthService } from './identify/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   imports:      [ 
@@ -29,7 +31,10 @@ import { routing } from './app.routing';
   bootstrap:    [ 
     AppComponent 
   ],
-  providers: []
+  providers: [
+    AuthService,
+    AuthGuard
+  ]
 })
 
 export class AppModule { }
