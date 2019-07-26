@@ -14,16 +14,15 @@ export class QuestionaryComponent implements OnInit {
   restante: number = 25;
   progresso: number = 0;
 
-  respostas: number[][] = [];
-
   myModel: any;
 
-  constructor(private router: Router) {
+  constructor( private router: Router ) {
+
     var points = new Array(100);
     for (var i = 0; i < 44; i++) {
-      this.coinwallet[i] = i + 1;
+      this.coinwallet[i] = "" + (i + 1);
     }
-    this.selectedwallet = 1;
+    this.selectedwallet = 1 + "";
 
     var t = window.setInterval(() => {
       this.time += 1;
@@ -37,8 +36,4 @@ export class QuestionaryComponent implements OnInit {
   }
 
   ngOnInit() { }
-
-  onBlurMethod() {
-    console.log(this.myModel);
-  }
 }

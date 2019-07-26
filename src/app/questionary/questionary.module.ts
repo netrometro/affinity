@@ -11,6 +11,7 @@ import { Quest04Component } from './quest04/quest04.component';
 import { Quest05Component } from './quest05/quest05.component';
 import { Quest06Component } from './quest06/quest06.component';
 import { Quest07Component } from './quest07/quest07.component';
+import { QuestionaryService } from './questionary.service';
 
 @NgModule({
   imports: [
@@ -20,10 +21,17 @@ import { Quest07Component } from './quest07/quest07.component';
   ],
   declarations: [
     QuestionaryComponent, 
-    Quest01Component, Quest02Component, Quest03Component, Quest04Component, Quest05Component, Quest06Component, Quest07Component
+    Quest01Component, 
+    Quest02Component, 
+    Quest03Component, 
+    Quest04Component, 
+    Quest05Component, 
+    Quest06Component, 
+    Quest07Component
   ],
   exports: [
     Quest01Component
-  ]
+  ],
+  providers: [QuestionaryService]
 })
 export class QuestionaryModule { }
