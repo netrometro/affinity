@@ -8,7 +8,7 @@
         <h5>Bem-vindo(a) à pesquisa.</h5>
         <p><small>Primeiramente, quero agradecer pelo seu interesse. Antes do início do estudo, é importante que você seja informado sobre o procedimento. Portanto, gostaríamos que você lesse atentamente esta carta informativa.</small></p>
         <h6>Objetivo do estudo</h6>
-        <p><small>O objetivo do estudo é investigar a se esta ferramenta consegue prever o desempenho no aprendizado de computação através da percepção na afinidade em identificar padrões. Alertamos que quem está sendo testada é a ferramenta e não você. Queremos sua ajudar para descobrir se ela serve ou não para ajudar os futuros estudantes de programação.</small></p>
+        <p><small>O objetivo do estudo é investigar se esta ferramenta consegue prever o desempenho futuro no aprendizado de computação através da percepção na afinidade em identificar padrões. Alertamos que, o que está sendo testada é a ferramenta e não você. Queremos sua ajudar para descobrir se ela serve ou não para ajudar os futuros estudantes de programação.</small></p>
         <h6>Procedimentos</h6>
         <p><small>Lhe apresentaremos uma série de peças de dominó que possuem um padrão esperado. Na próxima página teremos vários exemplos. Uma das peças estará faltando. Para cada sequência, você será questionado sobre qual peça a completa.</small></p>
         <h6>Participação voluntária</h6>
@@ -27,7 +27,17 @@
         - Você se reserva o direito de abandonar sua participação do estudo a qualquer momento sem fornecer qualquer motivo.</small></p>
       </div>
       <hr />
-      <p><a routerLink="/identify" class="btn btn-primary">Eu concordo, comece o estudo.</a></p>
+      <div class="row">
+        <div class="col-4">
+            <label for="matricula">Por favor, digite sua matricula. (requerido)</label>
+            <p><input [(ngModel)]="matricula" #mat="ngModel" name="mat" type="text" class="form-control" required /></p>
+            
+            <button (click)="login()" [disabled]="mat.invalid" type="submit" class="btn btn-primary">
+              Eu concordo, comece o estudo.
+            </button>
+        </div>
+      </div>
+      <br />
       <p><a href="https://disneyworld.disney.go.com/pt-br/" class="btn btn-danger">Eu não concordo, não desejo participar.</a></p>
   </div>
 </div>

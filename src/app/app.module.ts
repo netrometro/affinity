@@ -11,7 +11,7 @@ import { EndingComponent } from './ending/ending.component';
 import { QuestionaryModule } from './questionary/questionary.module';
 
 import { routing } from './app.routing';
-import { AuthService } from './identify/auth.service';
+import { AuthService } from './home/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
