@@ -3,12 +3,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class QuestionaryService {
 
-  respostas: number[][] = new Array();
+  respostas: any[];
 
-  constructor() { }
+  constructor() {
+    this.respostas = [];
+    for(let i=0; i < 44; i++) {
+      let a = []
+      this.respostas[i] = a;
+    }
+  }
 
   save(questao, posicao, resposta: number) {
-    this.respostas[questao][posicao] = resposta;
+    this.respostas[questao-1][posicao-1] = resposta;
     console.log(this.respostas);
   }
 
