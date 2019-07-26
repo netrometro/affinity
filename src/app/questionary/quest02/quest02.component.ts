@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { QuestionaryService } from '.././questionary.service';
+
 @Component({
   selector: 'app-quest02',
   templateUrl: './quest02.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Quest02Component implements OnInit {
 
-  constructor() { }
+  constructor(private questionaryService: QuestionaryService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  responder(questao, posicao, resposta: number) {
+    this.questionaryService.save(questao, posicao, resposta);
   }
 
 }
