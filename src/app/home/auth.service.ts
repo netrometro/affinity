@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
   autenticated: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   login(matricula: string) {
 
@@ -18,13 +19,13 @@ export class AuthService {
 
     if (matricula != '1234567890') {
       this.autenticated = true;
-      
-      console.log(matricula);
-
-      // redireciona 'identify'
+      console.log('Usuário novo.');
+      this.router.navigate(['/identify']);
+    } else {
+      this.autenticated = false;
+      console.log('Usuário já cadastrado.');
+      this.router.navigate(['/ending']);
     }
-    this.autenticated = false;
-    // redireciona 'ending'
   }
 
   userAutenticated() {

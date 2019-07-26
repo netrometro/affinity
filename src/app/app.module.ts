@@ -10,7 +10,7 @@ import { EndingComponent } from './ending/ending.component';
 
 import { QuestionaryModule } from './questionary/questionary.module';
 
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from './home/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -19,7 +19,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserModule, 
     FormsModule, 
     QuestionaryModule,
-    routing
+    AppRoutingModule
   ],
   declarations: [ 
     AppComponent, 
