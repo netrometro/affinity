@@ -9,16 +9,16 @@ import { EndingComponent } from './ending/ending.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
-const AppRoutes: Routes = [
+const appRoutes: Routes = [
    { path: '', component: HomeComponent },
-   { path: 'identify', component: IdentifyComponent },
-   { path: 'tutorial', component: TutorialComponent},
-   { path: 'questionary', component: QuestionaryComponent },
+   { path: 'identify', component: IdentifyComponent, canActivate: [AuthGuard] },
+   { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard] },
+   { path: 'questionary', component: QuestionaryComponent, canActivate: [AuthGuard] },
    { path: 'ending', component: EndingComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(AppRoutes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
