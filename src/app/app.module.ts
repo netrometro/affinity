@@ -13,6 +13,7 @@ import { QuestionaryModule } from './questionary/questionary.module';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from './home/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { IdentifyService } from './identify/identify.service';
 
 @NgModule({
   imports:      [ 
@@ -33,7 +34,8 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    IdentifyService
   ]
 })
 

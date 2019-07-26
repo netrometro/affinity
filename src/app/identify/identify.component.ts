@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { User } from './user.model';
+import { IdentifyService } from './identify.service';
 
 @Component({
   selector: 'app-identify',
@@ -14,22 +15,19 @@ export class IdentifyComponent implements OnInit {
   user: User = new User();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private identifyService: IdentifyService
   ) { } 
 
   ngOnInit() { }
-
-  cadastrar() {
-    //this.authService.inserir(this.user);
-  }
-
 
   onFormSubmit(form: NgForm) {
     if( form.invalid ){
       return;	
     }
 
-    
+    this.identifyService.save(this.user);
+    this.router.navigate(['/tutorial']);
   }
 
 }
