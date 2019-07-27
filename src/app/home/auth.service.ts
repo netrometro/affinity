@@ -21,7 +21,8 @@ export class AuthService {
     //Não pode fazer de novo, redireciona para 'ending'
 
     if (matricula != '1234567890') {
-      /this.store.collection('individuos').add(a);
+      let obj = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+      this.store.collection('individuos').add(obj);
 
       this.autenticated = true;
       console.log('Usuário novo.');
