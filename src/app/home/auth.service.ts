@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class AuthService {
 
   autenticated: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private store: AngularFirestore) { }
 
   login(matricula: string) {
 
@@ -18,10 +21,13 @@ export class AuthService {
     //Não pode fazer de novo, redireciona para 'ending'
 
     if (matricula != '1234567890') {
+      /this.store.collection('individuos').add(a);
+
       this.autenticated = true;
       console.log('Usuário novo.');
       this.router.navigate(['/identify']);
     } else {
+
       this.autenticated = false;
       console.log('Usuário já cadastrado.');
       this.router.navigate(['/ending']);
