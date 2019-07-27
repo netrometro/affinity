@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 
@@ -12,12 +13,26 @@ export class HomeComponent implements OnInit {
   matricula: string;
 
   constructor(
-    private authService: AuthService
-  ) { }
+    private authService: AuthService) { }
 
-  ngOnInit() { }
-
-  login() {
-    this.authService.login(this.matricula);
+  ngOnInit() {
+    this.resetForm();
   }
+
+  resetForm(form?: NgForm) {
+    if(form != null)
+      this.resetForm();
+
+    this.authService.formData = {
+      matricula: null,
+      programador: '',
+      idade: null,
+      genero: '',
+      formacao: ''
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    this.authService.login(form.value.matricula);
+  } 
 }

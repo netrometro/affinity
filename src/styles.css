@@ -8,6 +8,14 @@ table {
   margin: auto;
 }
 
+input.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+.validation-error {
+  color: red;
+}
+
 .page-link {
   padding: .5rem .48rem !important;
 }

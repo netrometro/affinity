@@ -29,5 +29,4 @@ export class IdentifyComponent implements OnInit {
     this.identifyService.save(this.user);
     this.router.navigate(['/tutorial']);
   }
-
 }
