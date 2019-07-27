@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { User } from './user.model';
+import { User } from '.././model/user.model';
 import { IdentifyService } from './identify.service';
 
 @Component({
