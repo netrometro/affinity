@@ -32,8 +32,8 @@ export class AuthService {
     private store: AngularFirestore) { }
 */
   login(matricula: string) {
-
-    this.afs.collection('individuos').doc(matricula).set( { 'date': Date.now() } });
+    let d = new Date();
+    this.afs.collection('individuos').doc(matricula).set( { 'date': d.toUTCString() });
 
     //let data = JSON.parse('{ "matricula": "' + matricula + '" }');
     //this.store.collection('individuos').add(data);
