@@ -22,13 +22,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
 
-    if (this.authService.userAutenticated()) {
-      console.log('Já inscrito')
+    if (this.authService.isDone()) {
+      console.log('Já concluiu o teste.');
+      this.router.navigate(['/ending']);
+      return false;
+    } else {
       return true;
     }
-
-    this.router.navigate(['/ending']);
-    return false;
   }
 
 }

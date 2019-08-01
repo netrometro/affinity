@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       this.resetForm();
 
     this.authService.formData = {
-      matricula: null,
+      matricula: '',
       programador: '',
       idade: null,
       genero: '',

@@ -11,12 +11,12 @@ import { User } from '.././model/user.interface';
 @Injectable()
 export class AuthService {
 
-  autenticated: boolean = false;
+  done: boolean = false;
 
   formData: User;
 
-  usersCollection: AngularFirestoreCollection<User>;
-  users: Observable<User[]>;
+  //usersCollection: AngularFirestoreCollection<User>;
+  //users: Observable<User[]>;
 
   constructor(
     private router: Router,
@@ -26,23 +26,28 @@ export class AuthService {
     //this.usersCollection = this.afs.collection('individuos');
     //this.users = this.usersCollection.valueChanges();
     //console.log(this.users);
+    this.done = false;
   }
 
   login(matricula: string) {
-    
     //Busca no banco a matricula
     let ref = this.afs.collection('individuos').ref;
     let query = ref.where('matricula', '==', matricula);
     let t = this.afs.collection('individuos', ref => query);
-    t.valueChanges().forEach(function (data) {
+     t.valueChanges().subscribe(data => {
+      console.log(data);
       if (data.length > 0) {
-        this.autenticated = true;
-        console.log(data);
+        this.done = true;
+      }
+     });
+
+
+     if (this.done) {
+        console.log('Já realizou: ');
+        console.log('auth.service.ts autenticated', this.done);
         //Redireciona para a 'ending'
         this.router.navigate(['/ending']);
-
-      } else {
-        this.autenticated = false;
+     } else {
         //Usuário novo é cadastrado
         let realizacao = new Date().toUTCString();
         
@@ -50,13 +55,38 @@ export class AuthService {
           'realizacao': realizacao,
           'matricula': matricula
         })
+        console.log('Cadastrado: ', matricula);
+        console.log('auth.service.ts autenticated', this.done);
+        //Redireciona para a 'identify'
+        this.router.navigate(['/identify']);
+      }
+    /*
+    t.valueChanges().forEach(data => {
+      if (data.length > 0) {
+        this.done = true;
+        console.log('Já realizou: ', data);
+        console.log('auth.service.ts autenticated', this.done);
+        //Redireciona para a 'ending'
+        this.router.navigate(['/ending']);
+
+      } else {
+        //Usuário novo é cadastrado
+        let realizacao = new Date().toUTCString();
+        
+        this.afs.collection('individuos').add({
+          'realizacao': realizacao,
+          'matricula': matricula
+        })
+        console.log('Cadastrado: ', matricula);
+        console.log('auth.service.ts autenticated', this.done);
         //Redireciona para a 'identify'
         this.router.navigate(['/identify']);
       }
     });
+    */
   }
 
-  userAutenticated() {
-    return this.autenticated;
+  isDone() {
+    return this.done;
   }
 }

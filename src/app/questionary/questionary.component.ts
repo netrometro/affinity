@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthService } from './../home/auth.service';
+
 @Component({
   selector: 'app-questionary',
   templateUrl: './questionary.component.html',
@@ -16,7 +18,9 @@ export class QuestionaryComponent implements OnInit {
 
   myModel: any;
 
-  constructor( private router: Router ) {
+  constructor( 
+    private router: Router,
+    private authService: AuthService) {
 
     var points = new Array(100);
     for (var i = 0; i < 44; i++) {
@@ -35,5 +39,7 @@ export class QuestionaryComponent implements OnInit {
     }, 1500000);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.autenticated = false;
+  }
 }
