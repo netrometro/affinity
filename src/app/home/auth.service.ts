@@ -25,6 +25,7 @@ export class AuthService {
   ngOnInit() {
     this.usersCollection = this.afs.collection('individuos');
     this.users = this.usersCollection.valueChanges();
+    console.log(this.users);
   }
 /*
   constructor(
@@ -32,8 +33,11 @@ export class AuthService {
     private store: AngularFirestore) { }
 */
   login(matricula: string) {
-    let d = new Date();
-    this.afs.collection('individuos').doc(matricula).set( { 'date': d.toUTCString() });
+    //let d = new Date();
+    //this.afs.collection('individuos').doc(matricula).set( { 'date': d.toUTCString() });
+    let query = this.afs.collection('individuos').ref.where('matricula', '==', '1234567890');
+    console.log(query);
+    //this.afs.collection('individuos', ref.);
 
     //let data = JSON.parse('{ "matricula": "' + matricula + '" }');
     //this.store.collection('individuos').add(data);
