@@ -6,14 +6,14 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 //import { AngularFirestore } from '@angular/fire/firestore';
 
-import { User } from '.././model/user.model';
+import { User } from '.././model/user.interface';
 
 @Injectable()
 export class AuthService {
 
-  formData: User;
-
   autenticated: boolean = false;
+
+  formData: User;
 
   usersCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
@@ -23,45 +23,37 @@ export class AuthService {
     private afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.usersCollection = this.afs.collection('individuos');
-    this.users = this.usersCollection.valueChanges();
-    console.log(this.users);
+    //this.usersCollection = this.afs.collection('individuos');
+    //this.users = this.usersCollection.valueChanges();
+    //console.log(this.users);
   }
-/*
-  constructor(
-    private router: Router,
-    private store: AngularFirestore) { }
-*/
+
   login(matricula: string) {
-    //let d = new Date();
-    //this.afs.collection('individuos').doc(matricula).set( { 'date': d.toUTCString() });
-    let query = this.afs.collection('individuos').ref.where('matricula', '==', '1234567890');
-    console.log(query);
-    //this.afs.collection('individuos', ref.);
-
-    //let data = JSON.parse('{ "matricula": "' + matricula + '" }');
-    //this.store.collection('individuos').add(data);
-
+    
     //Busca no banco a matricula
-    //Se não existir
-    //Usuário novo é cadastrado
-    //Redireciona para a 'identify'
-    //Se existir
-    //Não pode fazer de novo, redireciona para 'ending'
-/*
-    if (matricula != '1234567890') {
-      let obj = JSON.parse('{ "matricula": "' + matricula + '" }');
-      this.store.collection('individuos').add(obj);
+    let ref = this.afs.collection('individuos').ref;
+    let query = ref.where('matricula', '==', matricula);
+    let t = this.afs.collection('individuos', ref => query);
+    t.valueChanges().forEach(function (data) {
+      if (data.length > 0) {
+        this.autenticated = true;
+        console.log(data);
+        //Redireciona para a 'ending'
+        this.router.navigate(['/ending']);
 
-      this.autenticated = true;
-      console.log('Usuário novo.');
-      this.router.navigate(['/identify']);
-    } else {
-
-      this.autenticated = false;
-      console.log('Usuário já cadastrado.');
-      this.router.navigate(['/ending']);
-    }*/
+      } else {
+        this.autenticated = false;
+        //Usuário novo é cadastrado
+        let realizacao = new Date().toUTCString();
+        
+        this.afs.collection('individuos').add({
+          'realizacao': realizacao,
+          'matricula': matricula
+        })
+        //Redireciona para a 'identify'
+        this.router.navigate(['/identify']);
+      }
+    });
   }
 
   userAutenticated() {
