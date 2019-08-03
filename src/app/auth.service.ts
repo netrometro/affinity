@@ -33,8 +33,16 @@ export class AuthService {
     this.done = false;
   }
 
+  isDone() {
+    return this.done;
+  }
+
   login(matricula: string) {
     this.matricula = matricula;
+
+    let db = this.afs.
+
+
 
     //Busca no banco a matricula
     let ref = this.afs.collection('individuos').ref;
@@ -48,31 +56,6 @@ export class AuthService {
       }
       this.algo();
     });
-
-    /*
-    t.valueChanges().forEach(data => {
-      if (data.length > 0) {
-        this.done = true;
-        console.log('Já realizou: ', data);
-        console.log('auth.service.ts autenticated', this.done);
-        //Redireciona para a 'ending'
-        this.router.navigate(['/ending']);
-
-      } else {
-        //Usuário novo é cadastrado
-        let realizacao = new Date().toUTCString();
-        
-        this.afs.collection('individuos').add({
-          'realizacao': realizacao,
-          'matricula': matricula
-        })
-        console.log('Cadastrado: ', matricula);
-        console.log('auth.service.ts autenticated', this.done);
-        //Redireciona para a 'identify'
-        this.router.navigate(['/identify']);
-      }
-    });
-    */
   }
 
   algo() {
@@ -93,11 +76,7 @@ export class AuthService {
       console.log('Cadastrado: ', this.matricula);
       console.log('auth.service.ts autenticated', this.done);
       //Redireciona para a 'identify'
-      this.router.navigate(['/identify']);
+      this.router.navigate(['/identify', { id: this.matricula }]);
     }
-  }
-
-  isDone() {
-    return this.done;
   }
 }
