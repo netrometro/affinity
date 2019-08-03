@@ -14,12 +14,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdentifyComponent } from './identify/identify.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { QuestionaryModule } from './questionary/questionary.module';
 import { EndingComponent } from './ending/ending.component';
 
-import { QuestionaryModule } from './questionary/questionary.module';
-
 import { AppRoutingModule } from './app.routing.module';
-import { AuthService } from './home/auth.service';
+import { AuthService } from './auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { IdentifyService } from './identify/identify.service';
 

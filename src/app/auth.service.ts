@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 //import { AngularFirestore } from '@angular/fire/firestore';
 
-import { User } from '.././model/user.interface';
+import { User } from './model/user.interface';
 
 @Injectable()
 export class AuthService {
