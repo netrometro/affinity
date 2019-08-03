@@ -40,7 +40,7 @@ export class AuthService {
   login(matricula: string) {
     this.matricula = matricula;
 
-    let db = this.afs.
+    //let db = this.afs.
 
 
 
