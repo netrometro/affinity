@@ -31,9 +31,9 @@
       <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         <div class="form-group">
             <label for="matricula">Por favor, digite sua matricula. (requerido)</label>
-            <input name="matricula" #matricula="ngModel" [(ngModel)]="matricula" placeholder="Matricula" class="form-control" required />
+            <input name="matricula" #mat="ngModel" [(ngModel)]="matricula" placeholder="Matricula" class="form-control" required />
 
-            <div *ngIf="matricula.invalid && matricula.touched" class="validation-error">
+            <div *ngIf="mat.invalid && mat.touched" class="validation-error">
               <small>É precisa colocar sua matrícula para continuar.</small>
             </div>
         </div>

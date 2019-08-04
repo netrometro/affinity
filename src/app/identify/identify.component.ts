@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
 import { Person } from '.././model/person.interface';
 import { IdentifyService } from './identify.service';
 import { AuthService } from '.././auth.service';
@@ -15,15 +17,15 @@ import { AuthService } from '.././auth.service';
 })
 export class IdentifyComponent implements OnInit {
 
-  id: string;
   person: Person;
+
+  users: AngularFirestoreCollection<Person>;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private identifyService: IdentifyService,
-    private authService: AuthService) {
-
+    private afs: AngularFirestore) {
     
     this.person = {
       id: '',
@@ -38,22 +40,12 @@ export class IdentifyComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Recebe a matricula do componente home.
-    this.authService.emitter.subscribe(
-      //person => this.person = person
-      matricula => console.log('Identify receiver: ', matricula)
-    );
-    //console.log('Identify receiver: ', this.person);
+    // Cria uma id firebase
+    this.person.id = this.afs.createId();
+    this.person.matricula = this.route.snapshot.paramMap.get('mat');
+    this.person.realizacao = new Date().toUTCString();
 
-
-    // this.id = this.route.snapshot.paramMap.get('id');
-    // console.log('Identify id: ', this.id);
-    // Recebe o objeto person
-    //this.person = <Person> this.route.snapshot.queryParamMap.get('person');
-    //let t = this.route.snapshot.paramMap.get('queryParams');
-    //console.log(JSON.stringify(t));
-    //console.log('Identify recebendo person: ', this.person);
-
+    console.log('Identify person inicial: ', this.person);
   }
 
   onFormSubmit(form: NgForm) {
@@ -61,17 +53,8 @@ export class IdentifyComponent implements OnInit {
       return;	
     }
 
-    //this.person.id = this.id;
-    
-    this.route.queryParams
-      .subscribe(params => {
-        this.person.id = params.id;
-        this.person.matricula = params.matricula; 
-        this.person.realizacao = params.realizacao;
-    });
-
-    console.log('Identify person:', this.person)
-    this.identifyService.update(this.person);
+    console.log('Identify person final:', this.person)
+    this.identifyService.add(this.person);
     this.router.navigate(['/tutorial']);
   }
 }

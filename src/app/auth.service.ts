@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
@@ -7,22 +7,13 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-import { Person } from './model/person.interface';
-
 @Injectable()
 export class AuthService {
 
-  person: Person;
-
   done: boolean = false;
 
-  users: AngularFirestoreCollection<Person>;
-
-  emitter = new EventEmitter<String>();
-
   constructor(
-    private router: Router,
-    private afs: AngularFirestore) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.done = false;
@@ -44,13 +35,10 @@ export class AuthService {
 
     } else {
       // Senão, novato. (done == false)
-      // Emite a matricula para o próximo componente.
-      this.emitter.emit(matricula);
-      console.log('AuthService emitter: ', matricula);
+
+      //this.person.matricula = matricula;
 
 /*
-      // Cria uma id firebase
-      const id = this.afs.createId();
       // Constroi a person
       let person: Person = {
         id: id,
@@ -67,7 +55,7 @@ export class AuthService {
 
       // Redireciona para o resto do formulário passando o id firebase
       //this.router.navigate(['/identify'], {queryParams: person});
-      this.router.navigate(['/identify']);
+      this.router.navigate(['/identify', { mat: matricula }]);
     }
 
 
@@ -100,13 +88,12 @@ export class AuthService {
       let realizacao = new Date().toUTCString();
       
       this.afs.collection('individuos').add({
-        'realizacao': realizacao,
-        'matricula': this.matricula
+        'realizacao': realizacao
       })
-      console.log('Cadastrado: ', this.matricula);
       console.log('auth.service.ts autenticated', this.done);
       //Redireciona para a 'identify'
-      this.router.navigate(['/identify', { id: this.matricula }]);
+      //this.router.navigate(['/identify', { id: this.matricula }]);
+      this.router.navigate(['/identify']);
     }
   }
 }
