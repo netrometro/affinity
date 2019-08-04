@@ -24,24 +24,24 @@ export class QuestionaryService {
 
   setUID(uid: string) {
     this.uid = uid;
-    console.log('setUID: ', this.uid);
+    //console.log('setUID: ', this.uid);
   }
 
   save(questao: number, posicao: number, resposta: number) {
     // Registra no array
     this.answers[questao-1][posicao-1] = resposta;
-    console.log('Respostas: ', this.answers);
+    //console.log('Respostas: ', this.answers);
 
     let answer: Answer = {
       upAnswer: this.answers[questao-1][0],
       downAnswer: this.answers[questao-1][1]
     }
-    console.log('Answer: ', answer);
+    //console.log('Answer: ', answer);
 
     //Salva
     let answersCollection: AngularFirestoreCollection<Answer> = this.afs.collection<Answer>('answers');
     answersCollection.doc(this.uid).collection('questions').doc("" + questao).set(answer);
-    console.log('Salvo!');
+    //console.log('Salvo!');
   }
 
 }

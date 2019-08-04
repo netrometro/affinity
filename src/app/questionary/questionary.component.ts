@@ -46,7 +46,7 @@ export class QuestionaryComponent implements OnInit {
 
   ngOnInit() {
     let uid = this.route.snapshot.paramMap.get('uid');
-    console.log('Questionario uid: ', uid);
+    //console.log('Questionario uid: ', uid);
     this.questionaryService.setUID(uid);
   }
 }
