@@ -35,26 +35,7 @@ export class AuthService {
 
     } else {
       // Senão, novato. (done == false)
-
-      //this.person.matricula = matricula;
-
-/*
-      // Constroi a person
-      let person: Person = {
-        id: id,
-        matricula: matricula,
-        realizacao: new Date().toUTCString(),
-        programador: '',
-        idade: 0,
-        genero: '',
-        formacao: '',
-      };
-      let personsCollection = this.afs.collection<Person>('persons');
-      personsCollection.doc(id).set(person);
-*/
-
-      // Redireciona para o resto do formulário passando o id firebase
-      //this.router.navigate(['/identify'], {queryParams: person});
+      
       this.router.navigate(['/identify', { mat: matricula }]);
     }
 

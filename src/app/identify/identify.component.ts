@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 import { Person } from '.././model/person.interface';
 import { IdentifyService } from './identify.service';
-import { AuthService } from '.././auth.service';
 
 @Component({
   selector: 'app-identify',
@@ -18,8 +15,6 @@ import { AuthService } from '.././auth.service';
 export class IdentifyComponent implements OnInit {
 
   person: Person;
-
-  users: AngularFirestoreCollection<Person>;
 
   constructor(
     private router: Router,
@@ -55,6 +50,6 @@ export class IdentifyComponent implements OnInit {
 
     console.log('Identify person final:', this.person)
     this.identifyService.add(this.person);
-    this.router.navigate(['/tutorial']);
+    this.router.navigate(['/tutorial', { uid: this.person.id }]);
   }
 }

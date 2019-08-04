@@ -6,50 +6,38 @@ import { Answer } from '.././model/answer.interface';
 @Injectable()
 export class QuestionaryService {
 
-  uids: string[] = [];
-  //respostas: any[];
+  uid: string;
+  answers: any[] = [];
 
   constructor(private afs: AngularFirestore) {
     for(let i=0; i < 44; i++) {
-      this.uids[i] = null;
+      let a: any = []
+      a[0] = 0;
+      a[1] = 0;
+      this.answers[i] = a;
     }
-    /*
-    this.respostas = [];
-    for(let i=0; i < 44; i++) {
-      let a = []
-      this.respostas[i] = a;
-    }
-    */
   }
 
-  save(questao, posicao, resposta: number) {
-    //this.respostas[questao-1][posicao-1] = resposta;
-    //console.log(this.respostas);
+  setUID(uid: string) {
+    this.uid = uid;
+    console.log('setUID: ', this.uid);
+  }
 
-    // Verifica se a questao tem resposta
-    if (this.uids[questao-1] == null) {
-      console.log('nada!');
+  save(questao: number, posicao: number, resposta: number) {
+    // Registra no array
+    this.answers[questao-1][posicao-1] = resposta;
+    console.log('Respostas: ', this.answers);
 
-      let answer: Answer = {
-        person: '',
-        questNumber: questao,
-        upAnswer: posicao,
-        downAnswer: resposta
-      }
-
-      //Salva 
-    } else {
-      console.log('tem!');
-
-      // pega o que tem
-
-      // atualiza
+    let answer: Answer = {
+      upAnswer: this.answers[questao-1][0],
+      downAnswer: this.answers[questao-1][1]
     }
+    console.log('Answer: ', answer);
 
-
-
-    //let personsCollection: AngularFirestoreCollection<Person> = this.afs.collection<Person>('persons');;
-    //personsCollection.doc(person.id).set(person);
+    //Salva
+    let answersCollection: AngularFirestoreCollection<Answer> = this.afs.collection<Answer>('answers');
+    answersCollection.doc(this.uid).collection('questions').doc("" + questao).set(answer);
+    console.log('Salvo!');
   }
 
 }

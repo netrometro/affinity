@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthService } from '.././auth.service';
+import { QuestionaryService } from './questionary.service';
+
 
 @Component({
   selector: 'app-questionary',
@@ -20,7 +21,8 @@ export class QuestionaryComponent implements OnInit {
 
   constructor( 
     private router: Router,
-    private authService: AuthService) {
+    private route: ActivatedRoute,
+    private questionaryService: QuestionaryService) {
 
     var points = new Array(100);
     for (var i = 0; i < 44; i++) {
@@ -40,6 +42,8 @@ export class QuestionaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    let uid = this.route.snapshot.paramMap.get('uid');
+    console.log('Questionario uid: ', uid);
+    this.questionaryService.setUID(uid);
   }
 }

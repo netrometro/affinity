@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tutorial',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  start() {
+    let uid = this.route.snapshot.paramMap.get('uid');
+    console.log('Tutorial uid: ', uid);
+    
+    this.router.navigate(['/questionary', { uid: uid }]);
   }
-
 }
