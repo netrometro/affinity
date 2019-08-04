@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { QuestionaryService } from '.././questionary.service';
 
@@ -7,16 +7,20 @@ import { QuestionaryService } from '.././questionary.service';
   templateUrl: './quest01.component.html',
   styleUrls: ['./quest01.component.css']
 })
-export class Quest01Component {
+export class Quest01Component implements OnInit {
 
-  //TODO: Atributo é apagado quando passa para a próxima questão.
   upAnswer: number;
   downAnswer: number;
 
   constructor(private questionaryService: QuestionaryService) { }
 
+  ngOnInit() {
+    let a = this.questionaryService.getAnswers(1);
+    this.upAnswer = a[0];
+    this.downAnswer = a[1];
+  }
+
   responder(posicao: number, resposta: number) {
-    console.log(this.upAnswer);
     if (resposta < 0) { resposta = 0 };
     if (resposta > 6) { resposta = 6 }; 
     this.questionaryService.save(1, posicao, resposta);

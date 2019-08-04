@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
 
-    if (this.authService.isDone()) {
+    if (this.authService.done) {
       console.log('Já concluiu o teste.');
       this.router.navigate(['/ending']);
       return false;

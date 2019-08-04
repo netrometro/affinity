@@ -18,6 +18,10 @@ export class QuestionaryService {
     }
   }
 
+  getAnswers(question: number) {
+    return this.answers[question-1];
+  }
+
   setUID(uid: string) {
     this.uid = uid;
     console.log('setUID: ', this.uid);

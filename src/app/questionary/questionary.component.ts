@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { QuestionaryService } from './questionary.service';
+import { AuthService } from '.././auth.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class QuestionaryComponent implements OnInit {
   myModel: any;
 
   constructor( 
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
     private questionaryService: QuestionaryService) {
@@ -37,6 +39,7 @@ export class QuestionaryComponent implements OnInit {
     }, 1000);
     
     var tt = window.setTimeout(() => {
+      this.authService.done = true;
       this.router.navigate(['ending']);
     }, 1500000);
   }
