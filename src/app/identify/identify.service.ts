@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
-import { User } from '.././model/user.interface';
+import { Person } from '.././model/person.interface';
 
 @Injectable()
 export class IdentifyService {
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
-  save(user: User) {
-    console.log(user);
+  update(person: Person) {
+    let personDoc: AngularFirestoreDocument<Person> = this.afs.doc<Person>('person/' + person.id);
+    personDoc.update(person);
   }
 
 }

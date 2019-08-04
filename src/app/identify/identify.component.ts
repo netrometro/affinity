@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
-import { User } from '.././model/user.model';
+import { Person } from '.././model/person.interface';
 import { IdentifyService } from './identify.service';
 
 @Component({
@@ -14,17 +14,35 @@ import { IdentifyService } from './identify.service';
 })
 export class IdentifyComponent implements OnInit {
 
-  user: User = new User();
+  id: string;
+  person: Person;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private identifyService: IdentifyService
-  ) { }
+    private identifyService: IdentifyService) {
 
-  ngOnInit() { 
-    let id = this.route.snapshot.paramMap.get('id');
-    console.log('Identify id: ', id);
+    this.person = {
+      id: '',
+      matricula: '',
+      realizacao: '',
+      programador: '',
+      idade: null,
+      genero: '',
+      formacao: ''
+    }
+  }
+
+  ngOnInit() {
+    // Recebe o id
+    // this.id = this.route.snapshot.paramMap.get('id');
+    // console.log('Identify id: ', this.id);
+    // Recebe o objeto person
+    //this.person = <Person> this.route.snapshot.queryParamMap.get('person');
+    //let t = this.route.snapshot.paramMap.get('queryParams');
+    //console.log(JSON.stringify(t));
+    //console.log('Identify recebendo person: ', this.person);
+
   }
 
   onFormSubmit(form: NgForm) {
@@ -32,10 +50,17 @@ export class IdentifyComponent implements OnInit {
       return;	
     }
 
-    // Recebe o usuário 
-    // insere as informações dele
+    //this.person.id = this.id;
+    
+    this.route.queryParams
+      .subscribe(params => {
+        this.person.id = params.id;
+        this.person.matricula = params.matricula; 
+        this.person.realizacao = params.realizacao;
+    });
 
-    this.identifyService.save(this.user);
+    console.log('Identify person:', this.person)
+    this.identifyService.update(this.person);
     this.router.navigate(['/tutorial']);
   }
 }

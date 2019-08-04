@@ -1,35 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { first } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-//import { AngularFirestore } from '@angular/fire/firestore';
+//import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-import { User } from './model/user.interface';
+import { Person } from './model/person.interface';
 
 @Injectable()
 export class AuthService {
 
   done: boolean = false;
 
-  formData: User;
+  formData: Person;
 
   matricula: string;
-  users: AngularFirestoreCollection<User>;
-
-  //usersCollection: AngularFirestoreCollection<User>;
-  //users: Observable<User[]>;
+  users: AngularFirestoreCollection<Person>;
 
   constructor(
     private router: Router,
     private afs: AngularFirestore) { }
 
   ngOnInit() {
-    //this.usersCollection = this.afs.collection('individuos');
-    //this.users = this.usersCollection.valueChanges();
-    //console.log(this.users);
     this.done = false;
   }
 
@@ -40,10 +34,37 @@ export class AuthService {
   login(matricula: string) {
     this.matricula = matricula;
 
-    //let db = this.afs.
+    // Busca no banco a matricula
+
+    if (matricula == '000000000') {
+      // Se houver a matricula, significa que já concluiu a pesquisa. (done == true)
+      this.done = true;
+      // Redireciona para a página de agradecimento.
+      console.log('Done: ', this.done);
+      console.log(matricula);
+      this.router.navigate(['/ending']);
+    } else {
+      // Senão, novato. Cadastra o novato (done == false)
+      // Cria uma id firebase
+      const id = this.afs.createId();
+      // Constroi a person
+      let person: Person = {
+        id: id,
+        matricula: matricula,
+        realizacao: new Date().toUTCString(),
+        programador: '',
+        idade: 0,
+        genero: '',
+        formacao: '',
+      };
+      let personsCollection = this.afs.collection<Person>('persons');
+      personsCollection.doc(id).set(person);
+      // Redireciona para o resto do formulário passando o id firebase
+      this.router.navigate(['/identify'], {queryParams: person});
+    }
 
 
-
+/*
     //Busca no banco a matricula
     let ref = this.afs.collection('individuos').ref;
     let query = ref.where('matricula', '==', matricula);
@@ -56,6 +77,7 @@ export class AuthService {
       }
       this.algo();
     });
+*/
   }
 
   algo() {

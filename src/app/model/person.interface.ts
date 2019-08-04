@@ -1,4 +1,4 @@
-export interface User {
+export interface Person {
   id: string;
   matricula: string;
   realizacao: string;
