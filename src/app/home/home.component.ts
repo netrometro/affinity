@@ -12,8 +12,7 @@ export class HomeComponent implements OnInit {
 
   matricula: string;
 
-  constructor(
-    private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.resetForm();
