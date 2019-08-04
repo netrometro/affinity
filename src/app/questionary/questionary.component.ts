@@ -40,6 +40,6 @@ export class QuestionaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.autenticated = false;
+    
   }
 }
