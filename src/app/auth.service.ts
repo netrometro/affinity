@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
@@ -12,12 +12,13 @@ import { Person } from './model/person.interface';
 @Injectable()
 export class AuthService {
 
+  person: Person;
+
   done: boolean = false;
 
-  formData: Person;
-
-  matricula: string;
   users: AngularFirestoreCollection<Person>;
+
+  emitter = new EventEmitter<String>();
 
   constructor(
     private router: Router,
@@ -32,19 +33,22 @@ export class AuthService {
   }
 
   login(matricula: string) {
-    this.matricula = matricula;
-
     // Busca no banco a matricula
 
     if (matricula == '000000000') {
       // Se houver a matricula, significa que já concluiu a pesquisa. (done == true)
       this.done = true;
       // Redireciona para a página de agradecimento.
-      console.log('Done: ', this.done);
-      console.log(matricula);
+      console.log('Done: ', this.done, ' Matricula: ', matricula);
       this.router.navigate(['/ending']);
+
     } else {
-      // Senão, novato. Cadastra o novato (done == false)
+      // Senão, novato. (done == false)
+      // Emite a matricula para o próximo componente.
+      this.emitter.emit(matricula);
+      console.log('AuthService emitter: ', matricula);
+
+/*
       // Cria uma id firebase
       const id = this.afs.createId();
       // Constroi a person
@@ -59,8 +63,11 @@ export class AuthService {
       };
       let personsCollection = this.afs.collection<Person>('persons');
       personsCollection.doc(id).set(person);
+*/
+
       // Redireciona para o resto do formulário passando o id firebase
-      this.router.navigate(['/identify'], {queryParams: person});
+      //this.router.navigate(['/identify'], {queryParams: person});
+      this.router.navigate(['/identify']);
     }
 
 
@@ -79,6 +86,7 @@ export class AuthService {
     });
 */
   }
+
 
   algo() {
     

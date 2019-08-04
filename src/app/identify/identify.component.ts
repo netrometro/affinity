@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Person } from '.././model/person.interface';
 import { IdentifyService } from './identify.service';
+import { AuthService } from '.././auth.service';
 
 @Component({
   selector: 'app-identify',
@@ -20,8 +21,10 @@ export class IdentifyComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private identifyService: IdentifyService) {
+    private identifyService: IdentifyService,
+    private authService: AuthService) {
 
+    
     this.person = {
       id: '',
       matricula: '',
@@ -31,10 +34,18 @@ export class IdentifyComponent implements OnInit {
       genero: '',
       formacao: ''
     }
+    
   }
 
   ngOnInit() {
-    // Recebe o id
+    // Recebe a matricula do componente home.
+    this.authService.emitter.subscribe(
+      //person => this.person = person
+      matricula => console.log('Identify receiver: ', matricula)
+    );
+    //console.log('Identify receiver: ', this.person);
+
+
     // this.id = this.route.snapshot.paramMap.get('id');
     // console.log('Identify id: ', this.id);
     // Recebe o objeto person

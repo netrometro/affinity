@@ -22,18 +22,10 @@ export class HomeComponent implements OnInit {
     if(form != null)
       this.resetForm();
 
-    this.authService.formData = {
-      id: '',
-      matricula: '',
-      realizacao: '',
-      programador: '',
-      idade: null,
-      genero: '',
-      formacao: ''
-    }
+    this.matricula = '';
   }
 
   onSubmit(form: NgForm) {
-    this.authService.login(form.value.matricula);
+    this.authService.login(this.matricula);
   } 
 }
