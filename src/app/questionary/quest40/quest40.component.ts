@@ -23,6 +23,6 @@ export class Quest40Component implements OnInit {  // <= numero
   responder(posicao: number, resposta: number) {
     if (resposta < 0) { resposta = 0 };
     if (resposta > 6) { resposta = 6 }; 
-    this.questionaryService.save(30, posicao, resposta);  // <= numero
+    this.questionaryService.save(40, posicao, resposta);  // <= numero
   }
 }
