@@ -33,12 +33,12 @@
     <table>
       <tr>
         <td class="border border-danger domino">
-          <input name="r1" type="number" min="0" max="6" #up (blur)="responder(2, 1, up.value)" />
+          <input name="r1" type="number" min="0" max="6" #up (blur)="responder(1, up.value)" [(ngModel)]="upAnswer" />
         </td>
       </tr>
       <tr>
         <td class="border border-danger domino">
-          <input name="r2" type="number" min="0" max="6" #donw (blur)="responder(2, 2, donw.value)" />
+          <input name="r2" type="number" min="0" max="6" #donw (blur)="responder(2, donw.value)" [(ngModel)]="downAnswer" />
         </td>
       </tr>
     </table>

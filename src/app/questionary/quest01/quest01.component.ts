@@ -25,5 +25,4 @@ export class Quest01Component implements OnInit {
     if (resposta > 6) { resposta = 6 }; 
     this.questionaryService.save(1, posicao, resposta);
   }
-
 }

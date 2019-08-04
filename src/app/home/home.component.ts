@@ -49,12 +49,3 @@ export class HomeComponent implements OnInit {
     });
   } 
 }
-
-/*
-if (element.length > 0) {
-      // Se houver a matricula, significa que já concluiu a pesquisa.
-      console.log('Done: ', this.authService.done, ' Matricula: ', this.matricula);
-      // Redireciona para a página de agradecimento.
-      this.router.navigate(['/ending']);
-    } else 
-*/
