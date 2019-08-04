@@ -15,7 +15,7 @@ export class Quest19Component implements OnInit {  // <= numero
   constructor(private questionaryService: QuestionaryService) { }
 
   ngOnInit() {
-    let a = this.questionaryService.getAnswers(10); // <= numero
+    let a = this.questionaryService.getAnswers(19); // <= numero
     this.upAnswer = a[0];
     this.downAnswer = a[1];
   }
@@ -23,6 +23,6 @@ export class Quest19Component implements OnInit {  // <= numero
   responder(posicao: number, resposta: number) {
     if (resposta < 0) { resposta = 0 };
     if (resposta > 6) { resposta = 6 }; 
-    this.questionaryService.save(10, posicao, resposta);  // <= numero
+    this.questionaryService.save(19, posicao, resposta);  // <= numero
   }
 }
