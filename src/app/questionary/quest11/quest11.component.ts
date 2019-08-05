@@ -7,7 +7,7 @@ import { QuestionaryService } from '.././questionary.service';
   templateUrl: './quest11.component.html',
   styleUrls: ['./quest11.component.css']
 })
-export class Quest1Component implements OnInit {  // <= numero
+export class Quest11Component implements OnInit {  // <= numero
 
   upAnswer: number;
   downAnswer: number;
