@@ -1,0 +1,52 @@
+<div class="row questao">
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino quatro"></td></tr>
+      <tr><td class="border border-primary domino cinco"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino seis"></td></tr>
+      <tr><td class="border border-primary domino zero"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino um"></td></tr>
+      <tr><td class="border border-primary domino dois"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino tres"></td></tr>
+      <tr><td class="border border-primary domino quatro"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino cinco"></td></tr>
+      <tr><td class="border border-primary domino seis"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr><td class="border border-primary domino zero"></td></tr>
+      <tr><td class="border border-primary domino um"></td></tr>
+    </table>
+  </div>
+  <div class="col">
+    <table>
+      <tr>
+        <td class="border border-danger domino">
+          <input name="r1" type="number" min="0" max="6" #up (blur)="responder(1, up.value)" [(ngModel)]="upAnswer" />
+        </td>
+      </tr>
+      <tr>
+        <td class="border border-danger domino">
+          <input name="r2" type="number" min="0" max="6" #donw (blur)="responder(2, donw.value)" [(ngModel)]="downAnswer" />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
