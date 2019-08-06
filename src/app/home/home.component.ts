@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log('ok')
     // Busca no banco a matricula
     let collection: AngularFirestoreCollection = this.afs.collection('persons', 
       ref => ref.limit(1).where('matricula', '==', this.matricula));
